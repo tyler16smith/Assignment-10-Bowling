@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.title = "Home Page";
+}
+
+@model IEnumerable<Team>
+
+<div>
+    <br /><br />
+    <h3>Filter by Team</h3><br />
+
+    <a asp-action="Index" asp-controller="Home" asp-route-teamid=""><input type="button" class="btn btn-outline-primary" value="Home" /></a><br />
+
+    @foreach (var team in Model)
+    {
+        <a class="@( team.TeamName == ViewBag.SelectedType ? "btn-primary" : "btn-outline-secondary")"
+           asp-action="Index" 
+           asp-controller="Home" 
+           asp-route-teamid="@team.TeamId" 
+           asp-route-teamname="@team.TeamName">
+            <input type="button" class="btn btn-outline-primary" value="@team.TeamName" />
+        </a><br />
+    }
+    </div>

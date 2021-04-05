@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IndexViewModel
+
+<div>
+    <h1>Welcome to the Bowling League</h1>
+    <p>View the full list of league players below! You can filter by team on the left!</p><br />
+
+    @foreach (var player in Model.Bowler)
+    {
+        <div class="card card-body">
+            <div class="row m-1 p-1">
+                <div class="col-4">
+                    <h5>@player.BowlerFirstName @player.BowlerMiddleInit @player.BowlerLastName</h5>
+                </div>
+                <div class="col-5">
+                    <p>Address: @player.BowlerAddress @player.BowlerCity, @player.BowlerState @player.BowlerZip</p>
+                    <p>Phone: @player.BowlerPhoneNumber</p>
+                </div>
+                <div class="col-3">
+                    <br /><a><input type="button" class="btn btn-secondary" value="Read More" /></a>
+                </div>
+            </div>
+        </div>
+    }<br />
+
+    <div page-info="@Model.PageNumberingInfo" team-name="@Model.TeamName"
+         page-class="btn" page-class-normal="btn-outline-primary" page-class-selected="btn-primary">
+    </div>
+
+</div>
